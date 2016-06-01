@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </head>
+    <style type="text/css">
+    body {
+    background-color: #F5F5F5;
+    font-family: '微軟正黑體';
+    margin: 50px;
+    }
+    th {
+    text-align: center;
+    }
+    td {
+    text-align: center;
+    }
+    </style>
+    <script>
+    $(document).onload.showUser('05');
+    function showUser(str) {
+    if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+    }
+    else {
+    if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+    }
+    else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+    }
+    }
+    xmlhttp.open("GET", "funmin_list.php?q=" + str, true);
+    xmlhttp.send();
+    }
+    }
+    </script>
+    <body onload="showUser('12')">
+        <div class="container-fluid">
+            <form>
+                <select name="users" onchange="showUser(this.value)" autofocus>
+                    <option value="12">十二月</option>
+                    <option value="11">十一月</option>
+                    <option value="10">十月</option>
+                    <option value="09">九月</option>
+                    <option value="08">八月</option>
+                    <option value="07">七月</option>
+                    <option value="06">六月</option>
+                    <option value="05">五月</option>
+                    <option value="04">四月</option>
+                    <option value="03">三月</option>
+                    <option value="02">二月</option>
+                    <option value="01">一月</option>
+                </select>
+            </form>
+            <br>
+            <div id="txtHint"></div>
+        </div>
+    </body>
+</html>
