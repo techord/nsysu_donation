@@ -2,12 +2,7 @@
 
 			$q = $_GET['q'];
 						//echo $q;
-					$host = "localhost";   //See Step 3 about how to get host name
-					$user = "root";                     //Your Cloud 9 username
-					$pass = "nsysumis";                                 //Remember, there is NO password!
-					$db = "en_donors";                          //Your database name you want to connect to
-					$port = 3306;                               //The port #. It is always 3306
-					$connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+					require('dbconnect.php');
 					$connection->query("SET NAMES utf8");
 					$query = "SELECT * FROM funmin_list WHERE date LIKE '104".$q."%'";
 					$result = mysqli_query($connection, $query);

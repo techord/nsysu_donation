@@ -53,12 +53,7 @@
           $agreement = $_POST['agreement'];
           
           //Connect to the database
-          $host = "localhost";   //See Step 3 about how to get host name
-          $user = "root";                     //Your Cloud 9 username
-          $pass = "nsysumis";                                 //Remember, there is NO password!
-          $db = "en_donors";                          //Your database name you want to connect to
-          $port = 3306;                               //The port #. It is always 3306
-          $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+          require('dbconnect.php');
           if($name!='' && $money !=''){
           //And now to perform a simple query to make sure it's working
           $query = "INSERT INTO donor_data (name,company,title,phone,
